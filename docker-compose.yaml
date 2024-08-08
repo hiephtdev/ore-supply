@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ore-miner:
+    image: hiepht/ore-worker:1.0.0
+    volumes:
+      - ./key:/root/key
+    environment:
+      THREADS: 12
+      RPC: "https://mainnet.helius-rpc.com/?api-key=xxx"
+      KEYPAIR_FILEPATH: "/root/key/keypair.json"
+    entrypoint: ["/root/entrypoint.sh"]
+    restart: unless-stopped
